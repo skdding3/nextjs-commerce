@@ -5,7 +5,7 @@ const notion = new Client({
   auth: 'secret_XQDRRLJyDc00qLbISPQ1VKrSujviXJz0kq5MyaRiQbX',
 })
 
-const databaseId = 'a7c908c8212c47f186178a4c38518191'
+const databaseId = '833ed76bb9cb44b58474dc017dc3efc0'
 
 type Data = {
   message: string
