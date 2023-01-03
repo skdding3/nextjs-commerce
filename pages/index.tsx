@@ -2,19 +2,29 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
+import { useRef } from 'react'
 import Button from '@components/Button'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const inputRef = useRef<HTMLInputElement>(null)
+
   const handleClick = () => {
-    fetch('/api/add-item/?name=Jacket')
+    // input 빈값
+    if (inputRef.current == null || inputRef.current.value === '') {
+      alert('name을 넣어주세요.')
+      return
+    }
+    // input 내용 fetch함수로 전송
+    fetch(`/api/add-item/?name=${inputRef.current.value}`)
       .then((res) => res.json())
       .then((data) => alert(data.message))
   }
 
   return (
     <>
+      <input ref={inputRef} type="text" placeholder="name" />
       <button onClick={handleClick}>Add jacket</button>
       <Head>
         <title>Create Next App</title>
