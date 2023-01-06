@@ -34,7 +34,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  // get items
+  // get items api
 
   try {
     const response = await getDetail()
